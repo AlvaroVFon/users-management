@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      colors:
+        specifier: ^1.4.0
+        version: 1.4.0
       express:
         specifier: ^4.21.1
         version: 4.21.1
@@ -92,6 +95,10 @@ packages:
 
   color@3.2.1:
     resolution: {integrity: sha512-aBl7dZI9ENN6fUGC7mWpMTPNHmWUSNan9tuWN6ahh5ZLNk9baLJOnSMlrQkHcrfFgz2/RigjUVAjdx36VcemKA==}
+
+  colors@1.4.0:
+    resolution: {integrity: sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==}
+    engines: {node: '>=0.1.90'}
 
   colorspace@1.1.4:
     resolution: {integrity: sha512-BgvKJiuVu1igBUF2kEjRCZXol6wiiGbY5ipL/oVPwm0BL9sIpMIzM8IK7vwuxIIzOXMV3Ey5w+vxhm0rR/TN8w==}
@@ -606,6 +613,8 @@ snapshots:
     dependencies:
       color-convert: 1.9.3
       color-string: 1.9.1
+
+  colors@1.4.0: {}
 
   colorspace@1.1.4:
     dependencies:

@@ -1,8 +1,10 @@
 import express from "express"
+import { generateLogger } from "./config/logger.js"
 process.loadEnvFile()
 
 const app = express()
 const PORT = process.env.PORT
+const logger = generateLogger(import.meta.filename)
 
 // Middlewares
 
@@ -18,6 +20,10 @@ app.get("/", (req, res) => {
 
 // Server
 
-app.listen(PORT, () => {
-  console.log(`Server running at port ${PORT}`)
-})
+try {
+  app.listen(PORT, () => {
+    logger.info(`Server running on port ${PORT}`)
+  })
+} catch (error) {
+  logger.error(error)
+}
