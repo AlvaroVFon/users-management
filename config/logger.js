@@ -1,4 +1,5 @@
 import winston from "winston"
+import expressWinston from "express-winston"
 import "colors"
 
 function generateLogger(namespace) {
@@ -17,5 +18,15 @@ function generateLogger(namespace) {
     )
   })
 }
+function generateExpressLogger() {
+  return expressWinston.logger({
+    transports: [new winston.transports.Console()],
+    format: winston.format.combine(
+      winston.format.timestamp(),
+      winston.format.json()
+    ),
+    bodyWhitelist: ["body"]
+  })
+}
 
-export { generateLogger }
+export { generateLogger, generateExpressLogger }
