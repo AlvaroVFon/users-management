@@ -11,7 +11,7 @@ const logger = generateExpressLogger()
 // Middlewares
 
 app.use(express.json())
-app.use(logger)
+// app.use(logger)
 
 // Routes
 

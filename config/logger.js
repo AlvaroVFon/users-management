@@ -1,8 +1,8 @@
-import winston from "winston"
-import expressWinston from "express-winston"
-import "colors"
+import winston from 'winston'
+import expressWinston from 'express-winston'
+import 'colors'
 
-function generateLogger(namespace) {
+function generateLogger (namespace) {
   return winston.createLogger({
     transports: new winston.transports.Console(),
     format: winston.format.combine(
@@ -18,7 +18,7 @@ function generateLogger(namespace) {
     )
   })
 }
-function generateExpressLogger() {
+function generateExpressLogger () {
   return expressWinston.logger({
     transports: [new winston.transports.Console()],
     format: winston.format.combine(

@@ -2,11 +2,7 @@ import { User } from "../models/user.model.js"
 
 export const userService = {
   async create(data) {
-    try {
-      return await User.create(data)
-    } catch (error) {
-      throw new Error(error)
-    }
+    return await User.create(data)
   },
 
   async findAll() {
@@ -23,5 +19,9 @@ export const userService = {
     } catch (error) {
       throw new Error(error)
     }
+  },
+
+  async findByEmail(email) {
+    return await User.findOne({ email })
   }
 }

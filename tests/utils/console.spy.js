@@ -1,7 +1,7 @@
-import { jest } from "@jest/globals"
+import { jest } from '@jest/globals'
 
-function spyConsole() {
-  return jest.spyOn(console, "log").mockImplementation(() => {})
+function spyConsole () {
+  return jest.spyOn(console, 'log').mockImplementation(() => {})
 }
 
 export { spyConsole }
