@@ -5,6 +5,7 @@ import { handleError } from "../helpers/handleError.js"
 async function create(req, res) {
   try {
     const user = await userService.findByEmail(req.body.email)
+
     if (user) {
       return handleError({
         error: "User already exists",

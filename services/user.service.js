@@ -1,7 +1,9 @@
 import { User } from "../models/user.model.js"
+import { hashPassword } from "../helpers/hashPassword.js"
 
 export const userService = {
   async create(data) {
+    data.password = hashPassword(data.password)
     return await User.create(data)
   },
 
