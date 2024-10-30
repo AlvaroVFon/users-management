@@ -29,7 +29,9 @@ async function startApp() {
       console.log(`Server running on port ${PORT}`)
     })
     await dbConnect()
-  } catch (error) {}
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 startApp()

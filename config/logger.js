@@ -25,7 +25,21 @@ function generateExpressLogger() {
       winston.format.timestamp(),
       winston.format.json()
     ),
-    bodyWhitelist: ["body"]
+
+    dynamicMeta: (req, res) => {
+      const { password, ...reqBody } = req.body
+
+      return {
+        responseTime: res.responseTime,
+        req: {
+          headers: req.headers,
+          body: reqBody
+        },
+        res: {
+          statusCode: res.statusCode
+        }
+      }
+    }
   })
 }
 
