@@ -9,7 +9,7 @@ export const userService = {
 
   async findAll() {
     try {
-      await User.find()
+      return await User.find()
     } catch (error) {
       throw new Error(error)
     }

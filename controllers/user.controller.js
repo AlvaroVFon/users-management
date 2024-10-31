@@ -17,7 +17,7 @@ async function create(req, res) {
 
     const newUser = await userService.create(req.body)
 
-    handleResponse({ req, res, data: newUser, statusCode: 201 })
+    return handleResponse({ req, res, data: newUser, statusCode: 201 })
   } catch (error) {
     return res
       .status(error.statusCode || 500)
@@ -27,7 +27,8 @@ async function create(req, res) {
 
 async function findAll(req, res) {
   try {
-    return await userService.findAll()
+    const users = await userService.findAll()
+    return handleResponse({ req, res, data: users, statusCode: 200 })
   } catch (error) {
     res.status(500).json({ message: error })
   }
