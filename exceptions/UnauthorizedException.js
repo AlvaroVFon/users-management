@@ -1,11 +1,11 @@
 import {
   exceptionCodes,
-  exceptionsMessages
+  exceptionMessages
 } from "../utils/enums/exceptionsEnum.js"
 import HttpException from "./HttpException.js"
 
 class UnauthorizedException extends HttpException {
-  constructor(message = exceptionsMessages.UNAUTHORIZED, data) {
+  constructor(message = exceptionMessages.UNAUTHORIZED, data) {
     super(message, exceptionCodes.UNAUTHORIZED, data)
   }
 }

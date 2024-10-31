@@ -1,11 +1,11 @@
 import {
   exceptionCodes,
-  exceptionsMessages
+  exceptionMessages
 } from "../utils/enums/exceptionsEnum.js"
 import HttpException from "./HttpException.js"
 
 class ForbiddenException extends HttpException {
-  constructor(message = exceptionsMessages.FORBIDDEN, data) {
+  constructor(message = exceptionMessages.FORBIDDEN, data) {
     super(message, exceptionCodes.FORBIDDEN, data)
   }
 }

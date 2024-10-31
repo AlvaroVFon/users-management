@@ -1,4 +1,4 @@
-const exceptionsMessages = Object.freeze({
+const exceptionMessages = Object.freeze({
   BAD_REQUEST: "BAD_REQUEST",
   UNAUTHORIZED: "UNAUTHORIZED",
   FORBIDDEN: "FORBIDDEN",
@@ -16,4 +16,4 @@ const exceptionCodes = Object.freeze({
   INTERNAL_SERVER_ERROR: 500
 })
 
-export { exceptionsMessages, exceptionCodes }
+export { exceptionMessages, exceptionCodes }

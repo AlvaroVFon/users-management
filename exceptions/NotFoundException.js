@@ -1,11 +1,11 @@
 import {
   exceptionCodes,
-  exceptionsMessages
+  exceptionMessages
 } from "../utils/enums/exceptionsEnum.js"
 import HttpException from "./HttpException.js"
 
 class NotFoundException extends HttpException {
-  constructor(message = exceptionsMessages.NOT_FOUND, data) {
+  constructor(message = exceptionMessages.NOT_FOUND, data) {
     super(message, exceptionCodes.NOT_FOUND, data)
   }
 }
