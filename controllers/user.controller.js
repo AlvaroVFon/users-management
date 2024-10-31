@@ -33,7 +33,7 @@ async function findAll(req, res) {
       req,
       res,
       data: {
-        users,
+        users: users.map((user) => user.toPublicObject()),
         totalPages,
         page,
         limit
@@ -53,7 +53,12 @@ async function findOne(req, res) {
       throw new NotFoundException("User not found")
     }
 
-    return handleResponse({ req, res, data: user, statusCode: 200 })
+    return handleResponse({
+      req,
+      res,
+      data: user.toPublicObject(),
+      statusCode: 200
+    })
   } catch (error) {
     return handleError({
       error: error.message || error,
