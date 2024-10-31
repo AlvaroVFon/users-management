@@ -7,9 +7,13 @@ export const userService = {
     return await User.create(data)
   },
 
-  async findAll() {
+  async findAll({ limit, skip }) {
     try {
-      return await User.find()
+      const total = await User.countDocuments()
+      const totalPages = Math.ceil(total / limit)
+      const users = await User.find().skip(skip).limit(limit)
+
+      return { users, totalPages }
     } catch (error) {
       throw new Error(error)
     }

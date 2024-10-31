@@ -27,8 +27,19 @@ async function create(req, res) {
 
 async function findAll(req, res) {
   try {
-    const users = await userService.findAll()
-    return handleResponse({ req, res, data: users, statusCode: 200 })
+    const { page, limit, skip } = req.pagination
+    const { users, totalPages } = await userService.findAll({ limit, skip })
+    return handleResponse({
+      req,
+      res,
+      data: {
+        users,
+        totalPages,
+        page,
+        limit
+      },
+      statusCode: 200
+    })
   } catch (error) {
     res.status(500).json({ message: error })
   }
