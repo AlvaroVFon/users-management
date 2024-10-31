@@ -1,27 +1,27 @@
 import { userService } from "../services/user.service.js"
 import { handleResponse } from "../helpers/handleResponse.js"
 import { handleError } from "../helpers/handleError.js"
+import NotFoundException from "../exceptions/NotFoundException.js"
+import BadRequestException from "../exceptions/BadRequestException.js"
 
 async function create(req, res) {
   try {
     const user = await userService.findByEmail(req.body.email)
 
     if (user) {
-      return handleError({
-        error: "User already exists",
-        req,
-        res,
-        statusCode: 400
-      })
+      throw new BadRequestException("User already exists")
     }
 
     const newUser = await userService.create(req.body)
 
     return handleResponse({ req, res, data: newUser, statusCode: 201 })
   } catch (error) {
-    return res
-      .status(error.statusCode || 500)
-      .json({ error: error.message || error })
+    return handleError({
+      error: error.message || error,
+      req,
+      res,
+      statusCode: error.status || 500
+    })
   }
 }
 
@@ -45,4 +45,22 @@ async function findAll(req, res) {
   }
 }
 
-export { create, findAll }
+async function findOne(req, res) {
+  try {
+    const user = await userService.findById(req.params.id)
+
+    if (!user) {
+      throw new NotFoundException("User not found")
+    }
+
+    return handleResponse({ req, res, data: user, statusCode: 200 })
+  } catch (error) {
+    return handleError({
+      error: error.message || error,
+      req,
+      res,
+      statusCode: error.status || 500
+    })
+  }
+}
+export { create, findAll, findOne }

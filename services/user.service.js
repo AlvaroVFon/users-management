@@ -20,11 +20,7 @@ export const userService = {
   },
 
   async findById(id) {
-    try {
-      return await User.findById(id)
-    } catch (error) {
-      throw new Error(error)
-    }
+    return await User.findById(id)
   },
 
   async findByEmail(email) {
