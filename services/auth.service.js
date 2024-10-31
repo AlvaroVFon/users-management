@@ -1,18 +1,20 @@
 import jsonwebtoken from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import { userService } from "./user.service.js"
+import UnauthorizedException from "../exceptions/UnauthorizedException.js"
 
 export const authService = {
   async login({ email, password }) {
     const user = await userService.findByEmail(email)
+
     if (!user) {
-      throw new Error("Invalid credentials")
+      throw new UnauthorizedException("Invalid credentials")
     }
 
     const isValidPassword = this.verifyPassword({ user, password })
 
     if (!isValidPassword) {
-      throw new Error("Invalid credentials")
+      throw new UnauthorizedException("Invalid credentials")
     }
 
     const token = this.generateToken({ payload: user })
