@@ -25,5 +25,13 @@ export const userService = {
 
   async findByEmail(email) {
     return await User.findOne({ email })
+  },
+
+  async update(id, data) {
+    if (data.password) {
+      data.password = hashPassword(data.password)
+    }
+
+    return await User.findByIdAndUpdate(id, data)
   }
 }

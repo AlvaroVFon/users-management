@@ -68,4 +68,30 @@ async function findOne(req, res) {
     })
   }
 }
-export { create, findAll, findOne }
+
+async function update(req, res) {
+  try {
+    const user = await userService.findById(req.params.id)
+
+    if (!user) {
+      throw new NotFoundException("User not found")
+    }
+
+    const updatedUser = await userService.update(req.params.id, req.body)
+
+    return handleResponse({
+      req,
+      res,
+      data: updatedUser,
+      statusCode: 200
+    })
+  } catch (error) {
+    return handleError({
+      error: error.message || error,
+      req,
+      res,
+      statusCode: error.status || 500
+    })
+  }
+}
+export { create, findAll, findOne, update }
