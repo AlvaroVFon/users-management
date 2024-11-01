@@ -3,7 +3,8 @@ import {
   create,
   findAll,
   findOne,
-  update
+  update,
+  remove
 } from "../controllers/user.controller.js"
 import { createUserValidatorMiddleware } from "../middlewares/createUserMiddleware.js"
 import { paginationMiddleware } from "../middlewares/paginationMiddleware.js"
@@ -16,5 +17,6 @@ router
   .post("/", createUserValidatorMiddleware, create)
   .get("/:id", findOne)
   .patch("/:id", updateUserMiddleware, update)
+  .delete("/:id", remove)
 
 export { router as userRouter }

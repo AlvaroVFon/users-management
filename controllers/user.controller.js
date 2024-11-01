@@ -94,4 +94,32 @@ async function update(req, res) {
     })
   }
 }
-export { create, findAll, findOne, update }
+
+async function remove(req, res) {
+  try {
+    const user = await userService.findById(req.params.id)
+
+    if (!user) {
+      throw new NotFoundException("User not found")
+    }
+
+    await userService.delete(req.params.id)
+
+    return handleResponse({
+      req,
+      res,
+      data: {
+        message: "User deleted successfully"
+      },
+      statusCode: 200
+    })
+  } catch (error) {
+    return handleError({
+      error: error.message || error,
+      req,
+      res,
+      statusCode: error.status || 500
+    })
+  }
+}
+export { create, findAll, findOne, update, remove }

@@ -33,5 +33,9 @@ export const userService = {
     }
 
     return await User.findByIdAndUpdate(id, data)
+  },
+
+  async delete(id) {
+    return await User.findByIdAndDelete(id)
   }
 }
