@@ -37,5 +37,14 @@ export const userService = {
 
   async delete(id) {
     return await User.findByIdAndDelete(id)
+  },
+
+  async verifyUser(email) {
+    return await User.findOneAndUpdate({ email }, { isVerified: true })
+  },
+
+  async isVerified(email) {
+    const user = await User.findOne({ email })
+    return user.isVerified
   }
 }

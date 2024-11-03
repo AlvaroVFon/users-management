@@ -28,5 +28,9 @@ export const authService = {
 
   generateToken({ payload }) {
     return jsonwebtoken.sign(JSON.stringify(payload), process.env.JWT_SECRET)
+  },
+
+  verifyToken({ token }) {
+    return jsonwebtoken.verify(token, process.env.JWT_SECRET)
   }
 }

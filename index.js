@@ -2,6 +2,7 @@ import express from "express"
 import { dbConnect } from "./config/mongoose.js"
 import { userRouter } from "./routes/user.routes.js"
 import { authRouter } from "./routes/auth.route.js"
+import { verificationRouter } from "./routes/verification.route.js"
 process.loadEnvFile()
 
 const app = express()
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", userRouter)
 app.use("/auth", authRouter)
+app.use("/verification", verificationRouter)
 
 // Bootstrap
 
