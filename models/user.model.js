@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose"
+import { Schema, model } from 'mongoose'
 
 const userSchema = new Schema(
   {
@@ -20,7 +20,7 @@ const userSchema = new Schema(
 
     role: {
       type: Schema.Types.ObjectId,
-      ref: "Role"
+      ref: 'Role'
     },
 
     isVerified: {
@@ -40,7 +40,7 @@ const userSchema = new Schema(
   },
   {
     methods: {
-      toPublicObject() {
+      toPublicObject () {
         return {
           id: this._id,
           name: this.name,
@@ -55,4 +55,4 @@ const userSchema = new Schema(
   }
 )
 
-export const User = model("User", userSchema)
+export const User = model('User', userSchema)

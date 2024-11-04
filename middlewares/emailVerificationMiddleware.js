@@ -1,7 +1,7 @@
-import { emailVerificationSchema } from "../schemas/users/emailVerification.schema.js"
-import { handleError } from "../helpers/handleError.js"
+import { emailVerificationSchema } from '../schemas/users/emailVerification.schema.js'
+import { handleError } from '../helpers/handleError.js'
 
-function emailVerificationMiddleware(req, res, next) {
+function emailVerificationMiddleware (req, res, next) {
   const { error } = emailVerificationSchema.validate(req.body)
 
   if (error) {

@@ -1,15 +1,15 @@
-import { userService } from "../services/user.service.js"
-import { handleResponse } from "../helpers/handleResponse.js"
-import { handleError } from "../helpers/handleError.js"
-import NotFoundException from "../exceptions/NotFoundException.js"
-import BadRequestException from "../exceptions/BadRequestException.js"
+import { userService } from '../services/user.service.js'
+import { handleResponse } from '../helpers/handleResponse.js'
+import { handleError } from '../helpers/handleError.js'
+import NotFoundException from '../exceptions/NotFoundException.js'
+import BadRequestException from '../exceptions/BadRequestException.js'
 
-async function create(req, res) {
+async function create (req, res) {
   try {
     const user = await userService.findByEmail(req.body.email)
 
     if (user) {
-      throw new BadRequestException("User already exists")
+      throw new BadRequestException('User already exists')
     }
 
     const newUser = await userService.create(req.body)
@@ -25,7 +25,7 @@ async function create(req, res) {
   }
 }
 
-async function findAll(req, res) {
+async function findAll (req, res) {
   try {
     const { page, limit, skip } = req.pagination
     const { users, totalPages } = await userService.findAll({ limit, skip })
@@ -45,12 +45,12 @@ async function findAll(req, res) {
   }
 }
 
-async function findOne(req, res) {
+async function findOne (req, res) {
   try {
     const user = await userService.findById(req.params.id)
 
     if (!user) {
-      throw new NotFoundException("User not found")
+      throw new NotFoundException('User not found')
     }
 
     return handleResponse({
@@ -69,12 +69,12 @@ async function findOne(req, res) {
   }
 }
 
-async function update(req, res) {
+async function update (req, res) {
   try {
     const user = await userService.findById(req.params.id)
 
     if (!user) {
-      throw new NotFoundException("User not found")
+      throw new NotFoundException('User not found')
     }
 
     const updatedUser = await userService.update(req.params.id, req.body)
@@ -95,12 +95,12 @@ async function update(req, res) {
   }
 }
 
-async function remove(req, res) {
+async function remove (req, res) {
   try {
     const user = await userService.findById(req.params.id)
 
     if (!user) {
-      throw new NotFoundException("User not found")
+      throw new NotFoundException('User not found')
     }
 
     await userService.delete(req.params.id)
@@ -109,7 +109,7 @@ async function remove(req, res) {
       req,
       res,
       data: {
-        message: "User deleted successfully"
+        message: 'User deleted successfully'
       },
       statusCode: 200
     })

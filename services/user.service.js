@@ -1,13 +1,13 @@
-import { User } from "../models/user.model.js"
-import { hashPassword } from "../helpers/hashPassword.js"
+import { User } from '../models/user.model.js'
+import { hashPassword } from '../helpers/hashPassword.js'
 
 export const userService = {
-  async create(data) {
+  async create (data) {
     data.password = hashPassword(data.password)
     return await User.create(data)
   },
 
-  async findAll({ limit, skip }) {
+  async findAll ({ limit, skip }) {
     try {
       const total = await User.countDocuments()
       const totalPages = Math.ceil(total / limit)
@@ -19,15 +19,15 @@ export const userService = {
     }
   },
 
-  async findById(id) {
+  async findById (id) {
     return await User.findById(id)
   },
 
-  async findByEmail(email) {
+  async findByEmail (email) {
     return await User.findOne({ email })
   },
 
-  async update(id, data) {
+  async update (id, data) {
     if (data.password) {
       data.password = hashPassword(data.password)
     }
@@ -35,15 +35,15 @@ export const userService = {
     return await User.findByIdAndUpdate(id, data)
   },
 
-  async delete(id) {
+  async delete (id) {
     return await User.findByIdAndDelete(id)
   },
 
-  async verifyUser(email) {
+  async verifyUser (email) {
     return await User.findOneAndUpdate({ email }, { isVerified: true })
   },
 
-  async isVerified(email) {
+  async isVerified (email) {
     const user = await User.findOne({ email })
     return user.isVerified
   }

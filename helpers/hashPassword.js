@@ -1,6 +1,6 @@
-import bcrypt from "bcrypt"
+import bcrypt from 'bcrypt'
 
-function hashPassword(password, salt = 10) {
+function hashPassword (password, salt = 10) {
   return bcrypt.hashSync(password, salt)
 }
 

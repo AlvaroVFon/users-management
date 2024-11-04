@@ -1,22 +1,22 @@
-import { handleError } from "../helpers/handleError.js"
-import { handleResponse } from "../helpers/handleResponse.js"
-import { verificationService } from "../services/verification.service.js"
+import { handleError } from '../helpers/handleError.js'
+import { handleResponse } from '../helpers/handleResponse.js'
+import { verificationService } from '../services/verification.service.js'
 // import { mailService } from "../services/mail.service.js"
-import BadRequestException from "../exceptions/BadRequestException.js"
-import { userService } from "../services/user.service.js"
+import BadRequestException from '../exceptions/BadRequestException.js'
+import { userService } from '../services/user.service.js'
 
-async function sendVerificationEmail(req, res) {
+async function sendVerificationEmail (req, res) {
   try {
     const { email } = req.user
 
     if (!email) {
-      throw new BadRequestException("Email is required")
+      throw new BadRequestException('Email is required')
     }
 
     const isUserVerified = await userService.isVerified(email)
 
     if (isUserVerified) {
-      throw new BadRequestException("User is already verified")
+      throw new BadRequestException('User is already verified')
     }
 
     const code = await verificationService.generateCode()
@@ -47,7 +47,7 @@ async function sendVerificationEmail(req, res) {
   }
 }
 
-async function verifyCode(req, res) {
+async function verifyCode (req, res) {
   try {
     const { code } = req.body
     const { email } = req.user
@@ -55,13 +55,13 @@ async function verifyCode(req, res) {
     const userCode = await verificationService.findVerificationCode(email)
 
     if (!userCode) {
-      throw new BadRequestException("Verification code not found")
+      throw new BadRequestException('Verification code not found')
     }
 
     const isCodeValid = verificationService.verifyCode(userCode, code)
 
     if (!isCodeValid) {
-      throw new BadRequestException("Invalid code")
+      throw new BadRequestException('Invalid code')
     }
 
     await userService.verifyUser(email)
@@ -71,7 +71,7 @@ async function verifyCode(req, res) {
     return handleResponse({
       req,
       res,
-      data: { message: "User verified" },
+      data: { message: 'User verified' },
       statusCode: 200
     })
   } catch (error) {

@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose"
+import { Schema, model } from 'mongoose'
 
 const VerificationSchema = new Schema({
   email: {
@@ -16,4 +16,4 @@ const VerificationSchema = new Schema({
   }
 })
 
-export const Verification = model("Verification", VerificationSchema)
+export const Verification = model('Verification', VerificationSchema)

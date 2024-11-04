@@ -1,8 +1,8 @@
-import express from "express"
-import { dbConnect } from "./config/mongoose.js"
-import { userRouter } from "./routes/user.routes.js"
-import { authRouter } from "./routes/auth.route.js"
-import { verificationRouter } from "./routes/verification.route.js"
+import express from 'express'
+import { dbConnect } from './config/mongoose.js'
+import { userRouter } from './routes/user.routes.js'
+import { authRouter } from './routes/auth.route.js'
+import { verificationRouter } from './routes/verification.route.js'
 process.loadEnvFile()
 
 const app = express()
@@ -13,19 +13,19 @@ const PORT = process.env.PORT
 app.use(express.json())
 // Routes
 
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
   res.json({
     message: "Welcome to Alvaro's App"
   })
 })
 
-app.use("/users", userRouter)
-app.use("/auth", authRouter)
-app.use("/verification", verificationRouter)
+app.use('/users', userRouter)
+app.use('/auth', authRouter)
+app.use('/verification', verificationRouter)
 
 // Bootstrap
 
-async function startApp() {
+async function startApp () {
   try {
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`)

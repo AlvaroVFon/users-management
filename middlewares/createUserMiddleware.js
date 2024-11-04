@@ -1,7 +1,7 @@
-import { handleError } from "../helpers/handleError.js"
-import { userSchema } from "../schemas/users/createUser.schema.js"
+import { handleError } from '../helpers/handleError.js'
+import { userSchema } from '../schemas/users/createUser.schema.js'
 
-function createUserValidatorMiddleware(req, res, next) {
+function createUserValidatorMiddleware (req, res, next) {
   const { error } = userSchema.validate(req.body)
 
   if (error) {

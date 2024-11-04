@@ -1,10 +1,10 @@
 import {
   exceptionMessages,
   exceptionCodes
-} from "../utils/enums/exceptionsEnum.js"
+} from '../utils/enums/exceptionsEnum.js'
 
 class HttpException extends Error {
-  constructor(
+  constructor (
     message = exceptionMessages.INTERNAL_SERVER_ERROR,
     status = exceptionCodes.INTERNAL_SERVER_ERROR,
     data
