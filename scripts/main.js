@@ -1,17 +1,17 @@
-import {getDocuments, queryCollection, duplicateCollection} from "../config/database.js";
+import { getDocuments, queryCollection, duplicateCollection } from '../config/database.js'
 
 const query = {
-    name: 'manolito',
+  name: 'manolito'
 }
 
-async function main() {
-    await duplicateCollection('users');
+async function main () {
+  await duplicateCollection('users')
 }
 
 main().then(() => {
-    console.log('Done')
-    process.exit(0)
+  console.log('Done')
+  process.exit(0)
 }).catch(e => {
-    console.error(e)
-    process.exit(1)
-});
+  console.error(e)
+  process.exit(1)
+})

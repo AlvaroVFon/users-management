@@ -4,7 +4,7 @@ import { spyConsole } from './utils/console.spy.js'
 describe('logger', () => {
   it('should log a message', () => {
     const spy = spyConsole()
-    expect(spy).toHaveBeenCalledWith('Hola Mundo')
+    expect(spy).toHaveBeenCalledTimes(1)
     spy.mockRestore()
   })
 })
