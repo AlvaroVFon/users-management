@@ -1,11 +1,10 @@
 import { handleError } from '../helpers/handleError.js'
 import { handleResponse } from '../helpers/handleResponse.js'
 import { verificationService } from '../services/verification.service.js'
-// import { mailService } from "../services/mail.service.js"
 import BadRequestException from '../exceptions/BadRequestException.js'
 import { userService } from '../services/user.service.js'
 
-async function sendVerificationEmail (req, res) {
+async function sendVerificationEmail(req, res) {
   try {
     const { email } = req.user
 
@@ -19,35 +18,34 @@ async function sendVerificationEmail (req, res) {
       throw new BadRequestException('User is already verified')
     }
 
+    const verificationCodeEntity =
+      await verificationService.findVerificationEntity(email)
+
+    if (verificationCodeEntity) {
+      await verificationService.deleteVerificationCode(email)
+    }
+
     const code = await verificationService.generateCode()
 
     await verificationService.create(email, code)
-
-    // const mailContent = {
-    //   email,
-    //   subject: "Verification code",
-    //   text: `Your verification code is ${code}`
-    // }
-
-    // await mailService.sendMail(mailContent)
 
     return handleResponse({
       req,
       res,
       data: { code },
-      statusCode: 200
+      statusCode: 200,
     })
   } catch (error) {
     return handleError({
       error: error.message,
       req,
       res,
-      statusCode: error.status
+      statusCode: error.status,
     })
   }
 }
 
-async function verifyCode (req, res) {
+async function verifyCode(req, res) {
   try {
     const { code } = req.body
     const { email } = req.user
@@ -72,14 +70,14 @@ async function verifyCode (req, res) {
       req,
       res,
       data: { message: 'User verified' },
-      statusCode: 200
+      statusCode: 200,
     })
   } catch (error) {
     return handleError({
       error: error.message,
       req,
       res,
-      statusCode: error.status
+      statusCode: error.status,
     })
   }
 }

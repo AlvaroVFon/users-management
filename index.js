@@ -13,11 +13,11 @@ const PORT = process.env.PORT
 // Middlewares
 app.use(express.json())
 app.use(loggerMiddleware) *
-// Routes
-[]
+  // Routes
+  []
 app.get('/', (req, res) => {
   res.json({
-    message: "Welcome to Alvaro's App"
+    message: "Welcome to Alvaro's App",
   })
 })
 
@@ -27,7 +27,7 @@ app.use('/verification', verificationRouter)
 
 // Bootstrap
 
-async function startApp () {
+async function startApp() {
   try {
     await dbConnect()
     app.listen(PORT, () => {
