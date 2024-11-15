@@ -1,22 +1,24 @@
 import express from 'express'
-import { dbConnect } from './config/mongoose.js'
-import { userRouter } from './routes/user.routes.js'
-import { authRouter } from './routes/auth.route.js'
-import { verificationRouter } from './routes/verification.route.js'
+import {dbConnect} from './config/mongoose.js'
+import {userRouter} from './routes/user.routes.js'
+import {authRouter} from './routes/auth.route.js'
+import {verificationRouter} from './routes/verification.route.js'
+import {loggerMiddleware} from "./middlewares/LoggerMiddleware.js";
+
 process.loadEnvFile()
 
 const app = express()
 const PORT = process.env.PORT
 
 // Middlewares
-
 app.use(express.json())
+app.use(loggerMiddleware)
 // Routes
 
 app.get('/', (req, res) => {
-  res.json({
-    message: "Welcome to Alvaro's App"
-  })
+    res.json({
+        message: "Welcome to Alvaro's App"
+    })
 })
 
 app.use('/users', userRouter)
@@ -25,15 +27,15 @@ app.use('/verification', verificationRouter)
 
 // Bootstrap
 
-async function startApp () {
-  try {
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`)
-    })
-    await dbConnect()
-  } catch (error) {
-    console.error(error)
-  }
+async function startApp() {
+    try {
+        await dbConnect()
+        app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`)
+        })
+    } catch (error) {
+        console.error(error)
+    }
 }
 
 startApp()
