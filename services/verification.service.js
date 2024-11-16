@@ -18,12 +18,12 @@ async function generateCode() {
   return Math.floor(1000 + Math.random() * 9000)
 }
 
-function verifyCode(code, userCode) {
-  return code === userCode
+  function verifyCode(code, userCode) {
+    return code === userCode
 }
 
 async function create(email, code) {
-  const expiresAt = new Date() + process.env.VERIFICATION_TTL
+  const expiresAt = new Date() + parseInt(process.env.VERIFICATION_TTL)
   return Verification.create({ email, code, expiresAt })
 }
 
