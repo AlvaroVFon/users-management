@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import { dbConnect } from './config/mongoose.js'
 import { userRouter } from './routes/user.routes.js'
 import { authRouter } from './routes/auth.route.js'
