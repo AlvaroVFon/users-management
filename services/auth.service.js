@@ -12,13 +12,10 @@ export const authService = {
     }
 
     const isValidPassword = this.verifyPassword({ user, password })
-    console.log(user.id)
     if (!isValidPassword) {
       await userService.update(user.id, { loginAttemps: user.loginAttemps + 1 })
       throw new UnauthorizedException('Invalid credentials')
     }
-
-    console.log(user)
 
     const token = this.generateToken({ payload: user })
 
