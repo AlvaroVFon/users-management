@@ -1,0 +1,3 @@
+{"statusCode":500,"request":{"method":"GET","url":"/auth/me","body":{},"headers":{"user-agent":"PostmanRuntime/7.42.0","accept":"*/*","postman-token":"e9536691-8618-4d00-8100-475e58d8fe84","host":"localhost:4321"}}} 
+{"statusCode":500,"request":{"method":"GET","url":"/auth/me","body":{},"headers":{"user-agent":"PostmanRuntime/7.42.0","accept":"*/*","postman-token":"f773286b-6757-4b04-97b4-08997ff65459","host":"localhost:4321"}}} 
+{"statusCode":500,"request":{"method":"GET","url":"/auth/me","body":{},"headers":{"user-agent":"PostmanRuntime/7.42.0","accept":"*/*","postman-token":"c3b34f6d-3a97-404e-a191-535e5031b5c6","host":"localhost:4321"}}} 

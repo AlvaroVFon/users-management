@@ -1,11 +1,5 @@
 import { Router } from 'express'
-import {
-  create,
-  findAll,
-  findOne,
-  update,
-  remove
-} from '../controllers/user.controller.js'
+import { create, findAll, findOne, update, remove } from '../controllers/user.controller.js'
 import { createUserValidatorMiddleware } from '../middlewares/createUserMiddleware.js'
 import { paginationMiddleware } from '../middlewares/paginationMiddleware.js'
 import { updateUserMiddleware } from '../middlewares/updateUserMiddleware.js'
