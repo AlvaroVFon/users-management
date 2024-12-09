@@ -3,7 +3,7 @@ import {
   sendVerificationEmail,
   verifyCode
 } from '../controllers/verification.controller.js'
-import { emailVerificationMiddleware } from '../middlewares/emailVerificationMiddleware.js'
+import { codeValidatorMiddleware } from '../middlewares/codeValidatorMiddleware.js'
 import { isValidTokenMiddleware } from '../middlewares/isValidTokenMiddleware.js'
 
 const router = Router()
@@ -17,7 +17,7 @@ router
   .post(
     '/verify',
     isValidTokenMiddleware,
-    emailVerificationMiddleware,
+    codeValidatorMiddleware,
     verifyCode
   )
 

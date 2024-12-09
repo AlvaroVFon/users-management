@@ -4,43 +4,53 @@ const userSchema = new Schema(
   {
     name: {
       type: String,
-      required: true
+      required: true,
     },
 
     email: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
 
     password: {
       type: String,
-      required: true
+      required: true,
     },
 
     role: {
       type: Schema.Types.ObjectId,
-      ref: 'Role'
+      ref: 'Role',
     },
 
     isVerified: {
       type: Boolean,
-      default: false
+      default: false,
+    },
+
+    loginAttempts: {
+      type: Number,
+      default: 0,
+    },
+
+    lockUntil: {
+      type: Date,
+      default: 0,
     },
 
     createdAt: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
 
     updatedAt: {
       type: Date,
-      default: null
-    }
+      default: null,
+    },
   },
   {
     methods: {
-      toPublicObject () {
+      toPublicObject() {
         return {
           id: this._id,
           name: this.name,
@@ -48,11 +58,11 @@ const userSchema = new Schema(
           role: this.role,
           isVerified: this.isVerified,
           createdAt: this.createdAt,
-          updatedAt: this.updatedAt
+          updatedAt: this.updatedAt,
         }
-      }
-    }
-  }
+      },
+    },
+  },
 )
 
 export const User = model('User', userSchema)

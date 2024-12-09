@@ -4,6 +4,7 @@ import { userRouter } from './routes/user.routes.js'
 import { authRouter } from './routes/auth.route.js'
 import { verificationRouter } from './routes/verification.route.js'
 import { loggerMiddleware } from './middlewares/LoggerMiddleware.js'
+import cors from 'cors'
 
 process.loadEnvFile()
 
@@ -12,6 +13,7 @@ const PORT = process.env.PORT
 
 // Middlewares
 app.use(express.json())
+app.use(cors())
 app.use(loggerMiddleware) *
   // Routes
   []
