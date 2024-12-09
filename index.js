@@ -5,7 +5,6 @@ import { userRouter } from './routes/user.routes.js'
 import { authRouter } from './routes/auth.route.js'
 import { verificationRouter } from './routes/verification.route.js'
 import { loggerMiddleware } from './middlewares/LoggerMiddleware.js'
-import cors from 'cors'
 
 process.loadEnvFile()
 
