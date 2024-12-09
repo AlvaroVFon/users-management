@@ -18,6 +18,8 @@ export const authService = {
       throw new UnauthorizedException('Invalid credentials')
     }
 
+    console.log(user)
+
     const token = this.generateToken({ payload: user })
 
     return { token }

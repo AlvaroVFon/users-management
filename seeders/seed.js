@@ -1,23 +1,24 @@
 import { createRoles } from '../factories/roles.factory.js'
 import { createUsers } from '../factories/users.factory.js'
+import { hashPassword } from '../helpers/hashPassword.js'
 
 const users = [
   {
     username: 'superadmin',
     email: 'superadmin@email.com',
-    password: 'superadmin',
+    password: hashPassword('superadmin'),
     role: 'superadmin',
   },
   {
     username: 'admin',
     email: 'admin@email.com',
-    password: 'admin',
+    password: hashPassword('admin'),
     role: 'admin',
   },
   {
     username: 'user',
     email: 'user@email.com',
-    password: 'user',
+    password: hashPassword('user'),
     role: 'user',
   },
 ]

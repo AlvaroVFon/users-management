@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose'
+import { RolesEnum } from '../utils/enums/rolesEnum.js'
 
 const userSchema = new Schema(
   {
@@ -19,8 +20,8 @@ const userSchema = new Schema(
     },
 
     role: {
-      type: Schema.Types.ObjectId,
-      ref: 'Role',
+      type: String,
+      enum: RolesEnum,
     },
 
     isVerified: {
