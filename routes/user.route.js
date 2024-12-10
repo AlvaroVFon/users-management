@@ -11,9 +11,9 @@ import { isUserOwner } from '../middlewares/isUserOwner.js'
 const router = Router()
 
 router
+  .post('/', [createUserValidatorMiddleware], create)
   .use(isValidTokenMiddleware)
   .get('/', [isAdmin, paginationMiddleware], findAll)
-  .post('/', [createUserValidatorMiddleware], create)
   .get('/:id', [isAdmin, isUserOwner], findOne)
   .patch('/:id', [isAdmin, isUserOwner, updateUserMiddleware], update)
   .delete('/:id', [isSuperadmin, isUserOwner], remove)

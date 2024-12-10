@@ -18,8 +18,7 @@ async function sendVerificationEmail(req, res) {
       throw new BadRequestException('User is already verified')
     }
 
-    const verificationCodeEntity =
-      await verificationService.findVerificationEntity(email)
+    const verificationCodeEntity = await verificationService.findVerificationEntity(email)
 
     if (verificationCodeEntity) {
       await verificationService.deleteVerificationCode(email)
