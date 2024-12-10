@@ -2,9 +2,8 @@ import { dbConnect } from '../config/database.js'
 
 async function createUsers(users = []) {
   const db = await dbConnect()
-  const collection = db.collection('users')
-  await collection.drop()
-  await collection.insertMany(users)
+  await db.collection('users').drop()
+  await db.collection('users').insertMany(users)
   console.log('Users created successfully')
 }
 

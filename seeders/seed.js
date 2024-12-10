@@ -3,26 +3,41 @@ import { createUsers } from '../factories/users.factory.js'
 
 const users = [
   {
-    username: 'superadmin',
+    name: 'superadmin',
     email: 'superadmin@email.com',
     password: 'superadmin',
     role: 'superadmin',
+    isVerified: true,
+    loginAttempts: 0,
+    lockUntil: 0,
+    createAt: new Date(),
+    updateAt: null,
   },
   {
-    username: 'admin',
+    name: 'admin',
     email: 'admin@email.com',
     password: 'admin',
     role: 'admin',
+    isVerified: true,
+    loginAttempts: 0,
+    lockUntil: 0,
+    createAt: new Date(),
+    updateAt: null,
   },
   {
-    username: 'user',
+    name: 'user',
     email: 'user@email.com',
     password: 'user',
     role: 'user',
+    isVerified: true,
+    loginAttempts: 0,
+    lockUntil: 0,
+    createAt: new Date(),
+    updateAt: null,
   },
 ]
 
-export const seed = async () => {
+const seed = async () => {
   try {
     await createRoles()
     await createUsers(users)
