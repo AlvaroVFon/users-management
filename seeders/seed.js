@@ -1,28 +1,44 @@
 import { createRoles } from '../factories/roles.factory.js'
 import { createUsers } from '../factories/users.factory.js'
+import { hashPassword } from '../helpers/hashPassword.js'
 
 const users = [
   {
-    username: 'superadmin',
+    name: 'superadmin',
     email: 'superadmin@email.com',
-    password: 'superadmin',
+    password: hashPassword('superadmin'),
     role: 'superadmin',
+    isVerified: true,
+    loginAttempts: 0,
+    lockUntil: 0,
+    createAt: new Date(),
+    updateAt: null,
   },
   {
-    username: 'admin',
+    name: 'admin',
     email: 'admin@email.com',
-    password: 'admin',
+    password: hashPassword('admin'),
     role: 'admin',
+    isVerified: true,
+    loginAttempts: 0,
+    lockUntil: 0,
+    createAt: new Date(),
+    updateAt: null,
   },
   {
-    username: 'user',
+    name: 'user',
     email: 'user@email.com',
-    password: 'user',
+    password: hashPassword('user'),
     role: 'user',
+    isVerified: true,
+    loginAttempts: 0,
+    lockUntil: 0,
+    createAt: new Date(),
+    updateAt: null,
   },
 ]
 
-export const seed = async () => {
+const seed = async () => {
   try {
     await createRoles()
     await createUsers(users)

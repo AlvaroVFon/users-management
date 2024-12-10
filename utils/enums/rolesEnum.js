@@ -1,1 +1,1 @@
-export const RolesEnum = Object.freeze(['admin', 'user', 'superadmin'])
+export const RolesEnum = Object.freeze(['admin', 'user', 'superadmin', 'guest'])
