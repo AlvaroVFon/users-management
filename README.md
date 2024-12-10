@@ -6,7 +6,7 @@ This project is just an scaffolding for build more complex applications.
 
  - NodeJS 
  - MongoDB
- - 
+ - Docker
 
 ## Requirements 
 
