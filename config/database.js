@@ -5,8 +5,6 @@ dotenv.config()
 
 const { MONGO_URI, MONGO_DB } = process.env
 
-console.log(MONGO_URI, MONGO_DB)
-
 async function dbConnect () {
   const client = new MongoClient(MONGO_URI)
   try {

@@ -44,9 +44,6 @@ importers:
       mongoose:
         specifier: ^8.7.3
         version: 8.7.3
-      nodemailer:
-        specifier: ^6.9.16
-        version: 6.9.16
       supertest:
         specifier: ^7.0.0
         version: 7.0.0
@@ -2055,10 +2052,6 @@ packages:
   node-releases@2.0.18:
     resolution: {integrity: sha512-d9VeXT4SJ7ZeOqGX6R5EM022wpL+eWPooLI+5UpWn2jCT1aosUQEhQP214x33Wkwx3JQMvIm+tIoVOdodFS40g==}
 
-  nodemailer@6.9.16:
-    resolution: {integrity: sha512-psAuZdTIRN08HKVd/E8ObdV6NO7NTBY3KsC30F7M4H1OnmLCUNaS56FpYxyb26zWLSyYF9Ozch9KYHhHegsiOQ==}
-    engines: {node: '>=6.0.0'}
-
   nopt@5.0.0:
     resolution: {integrity: sha512-Tbj67rffqceeLpcRXrT7vKAN8CwfPeIBgM7E6iBkmKLV7bEMwpGgYLGv0jACUsECaa/vuxP0IjEont6umdMgtQ==}
     engines: {node: '>=6'}
@@ -3902,7 +3895,7 @@ snapshots:
       eslint: 8.57.1
       eslint-plugin-react: 7.37.2(eslint@8.57.1)
 
-  eslint-config-standard@17.1.0(eslint-plugin-import@2.31.0(eslint@9.13.0))(eslint-plugin-n@15.7.0(eslint@9.13.0))(eslint-plugin-promise@6.6.0(eslint@9.13.0))(eslint@8.57.1):
+  eslint-config-standard@17.1.0(eslint-plugin-import@2.31.0(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       eslint: 8.57.1
       eslint-plugin-import: 2.31.0(eslint@8.57.1)
@@ -5211,8 +5204,6 @@ snapshots:
 
   node-releases@2.0.18: {}
 
-  nodemailer@6.9.16: {}
-
   nopt@5.0.0:
     dependencies:
       abbrev: 1.1.1
@@ -5604,7 +5595,7 @@ snapshots:
   standard@17.1.2:
     dependencies:
       eslint: 8.57.1
-      eslint-config-standard: 17.1.0(eslint-plugin-import@2.31.0(eslint@9.13.0))(eslint-plugin-n@15.7.0(eslint@9.13.0))(eslint-plugin-promise@6.6.0(eslint@9.13.0))(eslint@8.57.1)
+      eslint-config-standard: 17.1.0(eslint-plugin-import@2.31.0(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
       eslint-config-standard-jsx: 11.0.0(eslint-plugin-react@7.37.2(eslint@8.57.1))(eslint@8.57.1)
       eslint-plugin-import: 2.31.0(eslint@8.57.1)
       eslint-plugin-n: 15.7.0(eslint@8.57.1)

@@ -21,7 +21,7 @@ function verifyCode(code, userCode) {
 }
 
 async function create(email, code) {
-  const expiresAt = new Date() + parseInt(process.env.VERIFICATION_TTL)
+  const expiresAt = new Date() + Number(process.env.VERIFICATION_TTL)
   return Verification.create({ email, code, expiresAt })
 }
 
